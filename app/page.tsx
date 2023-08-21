@@ -2,25 +2,32 @@ import DayState from "@/components/DayState";
 import { kv } from "@vercel/kv";
 import Image from "next/image";
 import Link from "next/link";
+import { deleteHabit } from "./actions";
+import DeleteButton from "@/components/Deletebutton";
 export type Habits = {
-  [habit: string] : Record<string, boolean> } | null
+  [habit: string]: Record<string, boolean>;
+} | null;
 
 export default async function Home() {
-  const habits: Habits = await kv.hgetall('habits');
+  const habits: Habits = await kv.hgetall("habits");
 
   const today = new Date();
   const todayWeekDay = today.getDay();
-  const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+  const weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
 
-  const sortedWeekDays = weekDays.slice(todayWeekDay + 1).concat(weekDays.slice(0, todayWeekDay + 1));
+  const sortedWeekDays = weekDays
+    .slice(todayWeekDay + 1)
+    .concat(weekDays.slice(0, todayWeekDay + 1));
 
-  const last7Days = weekDays.map((_, index) => {
-    const date = new Date();
-    date.setDate(date.getDate() - index);
+  const last7Days = weekDays
+    .map((_, index) => {
+      const date = new Date();
+      date.setDate(date.getDate() - index);
 
-    return date.toISOString().slice(0, 10);
-  }).reverse();
-  
+      return date.toISOString().slice(0, 10);
+    })
+    .reverse();
+
   return (
     <main className="container relative flex flex-col gap-8 px-4 pt-16">
       {habits === null ||
@@ -29,24 +36,16 @@ export default async function Home() {
             Você não tem hábitos cadastrados
           </h1>
         ))}
-      {
-        habits !== null && Object.entries(habits).map(
-          ([habit, habitStreak]) => (
-            <div key={habit} className="flex flex-col gap-2">
-              <div className="flex justify-between items-center">
-                <span className="text-xl font-light text-white font-sans">
-                  {habit}
-                </span>
-                <button>
-                  <Image
-                    src="/images/trash.svg"
-                    width={20}
-                    height={20}
-                    alt="Icone de lixeira Vermelha"
-                  />
-                </button>
-              </div>
-              <Link href={`habito/${habit}`}>
+      {habits !== null &&
+        Object.entries(habits).map(([habit, habitStreak]) => (
+          <div key={habit} className="flex flex-col gap-2">
+            <div className="flex justify-between items-center">
+              <span className="text-xl font-light text-white font-sans">
+                {habit}
+              </span>
+              <DeleteButton habit={habit} />
+            </div>
+            <Link href={`habito/${habit}`}>
               <section className="grid grid-cols-7 bg-neutral-800 rounded-md p-2">
                 {sortedWeekDays.map((day, index) => (
                   <div key={day} className="flex flex-col last:font-bold">
@@ -58,13 +57,16 @@ export default async function Home() {
                   </div>
                 ))}
               </section>
-                </Link>
-            </div>
-          )
-        )
-      }
+            </Link>
+          </div>
+        ))}
 
-      <Link href={"novo-habito"} className="fixed text-center bottom-10 w-2/3 left-1/2 -translate-x-1/2 text-neutral-900 bg-[#45edad] font-display font-regular text-2xl p-2 rounded-md">novo hábito</Link>
+      <Link
+        href={"novo-habito"}
+        className="fixed text-center bottom-10 w-2/3 left-1/2 -translate-x-1/2 text-neutral-900 bg-[#45edad] font-display font-regular text-2xl p-2 rounded-md"
+      >
+        novo hábito
+      </Link>
     </main>
   );
 }

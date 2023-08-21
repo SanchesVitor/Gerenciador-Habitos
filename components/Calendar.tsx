@@ -70,7 +70,10 @@ function Calendar({
   }
 
   function getDayString(day: Date) {
-    return `${year.toString()}-${month + 1}-${day.getDate().toString()}`;
+    return `${year.toString()}-${(month + 1).toString().padStart(2, "0")}-${day
+      .getDate()
+      .toString()
+      .padStart(2, "0")}`;
   }
 
   return (

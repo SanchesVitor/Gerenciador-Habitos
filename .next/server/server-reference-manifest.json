@@ -1,4 +1,13 @@
 {
-  "node": {},
+  "node": {
+    "5719c0064862d35db2687f3f372558b550fbe57d": {
+      "workers": {
+        "app/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CVSanches%5C%5CDocuments%5C%5CEstudos%5C%5CGerenciador-Habitos%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22deleteHabit%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/page": "actionBrowser"
+      }
+    }
+  },
   "edge": {}
 }
