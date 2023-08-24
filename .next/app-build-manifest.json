@@ -15,6 +15,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/habito/[habit]/page.js"
+    ],
+    "/novo-habito/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/novo-habito/page.js"
     ]
   }
 }

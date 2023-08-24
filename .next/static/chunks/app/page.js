@@ -60,7 +60,8 @@ eval(__webpack_require__.ts("\nObject.defineProperty(exports, \"__esModule\", ({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   deleteHabit: function() { return /* binding */ deleteHabit; }
+/* harmony export */   deleteHabit: function() { return /* binding */ deleteHabit; },
+/* harmony export */   toggleHabit: function() { return /* binding */ toggleHabit; }
 /* harmony export */ });
 /* harmony import */ var next_dist_client_app_call_server__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/client/app-call-server */ "(app-pages-browser)/./node_modules/next/dist/client/app-call-server.js");
 /* harmony import */ var next_dist_client_app_call_server__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_client_app_call_server__WEBPACK_IMPORTED_MODULE_0__);
@@ -73,9 +74,10 @@ function __build_action__(action, args) {
   return (0,next_dist_client_app_call_server__WEBPACK_IMPORTED_MODULE_0__.callServer)(action.$$id, args)
 }
 
-/* __next_internal_action_entry_do_not_use__ deleteHabit */ 
+/* __next_internal_action_entry_do_not_use__ deleteHabit,toggleHabit */ 
 
 var deleteHabit = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_2__["default"])("5719c0064862d35db2687f3f372558b550fbe57d");
+var toggleHabit = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_2__["default"])("3d298a0b8939becb19b338146a94a8ca19771a88");
 
 
 
